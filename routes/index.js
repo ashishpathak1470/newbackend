@@ -3,34 +3,57 @@ var router = express.Router();
 const userModel = require("./users");
 
 
+
+
 router.get('/', function(req, res) {
-  res.send("Welcome");
+  req.session.kuchbhinaam = "ashish"; // session bna hai (CREATE)
+  req.session.ban = true; //(BAN KIYA)
+  res.send("Welcome to my Server");
 });
 
-router.get("/create", async function(req, res) {
-  const usercreated = await userModel.create({
-    username: "ash",
-    age: 21,
-    name:"ashish"
-  });
-  res.send(usercreated);
-}) // craete the user (CREATING)
+router.get("/check",function(req  , res) {
+  if(req.session.ban === true) //check kiya session ko (READ)
+  {
+    console.log(req.session);
+    res.send("you are banned");
+  }
+  else{
+    res.send("you are not banned");
+  }
+}) // (BAN CHECK KIYA)
 
-router.get("/find", async function(req, res) {
-  const userfound = await userModel.find();
-  res.send(userfound);
-}) // find the user and show them on the frontend (READING)
+router.get("/removeban", function(req, res) {
+  req.session.destroy(function(err) // (DELETE)
+   {
+    if(err) throw err;
+    res.send("you are unbanned");
+  })
+}) // remove kiya session ko (BAN HATAYA)
 
-router.get("/Onefind", async function(req, res) {
-  const userfound = await userModel.findOne({username:"ash"});
-  res.send(userfound);
-}) // find one specific user
+// router.get("/create", async function(req, res) {
+//   const usercreated = await userModel.create({
+//     username: "ash",
+//     age: 21,
+//     name:"ashish"
+//   });
+//   res.send(usercreated);
+// }) // craete the user (CREATING)
+
+// router.get("/find", async function(req, res) {
+//   const userfound = await userModel.find();
+//   res.send(userfound);
+// }) // find the user and show them on the frontend (READING)
+
+// router.get("/Onefind", async function(req, res) {
+//   const userfound = await userModel.findOne({username:"ash"});
+//   res.send(userfound);
+// }) // find one specific user
 
 
-router.get("/delete", async function(req, res) {
-  const userdeleted = await userModel.findOneAndDelete({username:"ash"});
-  res.send(userdeleted);
-}) // Delete one perticular user (DELETING)
+// router.get("/delete", async function(req, res) {
+//   const userdeleted = await userModel.findOneAndDelete({username:"ash"});
+//   res.send(userdeleted);
+// }) // Delete one perticular user (DELETING)
 
 
 
