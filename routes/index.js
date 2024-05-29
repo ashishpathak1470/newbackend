@@ -16,7 +16,7 @@ const userModel = require("./users");
 // router.get('/delete', function(req, res) {
 //   res.clearCookie("age"); // delete kiya hai
 //   res.send("delete hua");
-// })
+// }) // (DELETING)
 
 
 
