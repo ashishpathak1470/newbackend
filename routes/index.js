@@ -18,7 +18,7 @@ const userModel = require("./users");
 //   res.send("delete hua");
 // }) // (DELETING)
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // SESSION SIKHA HAI
 // router.get('/', function(req, res) {
@@ -46,6 +46,7 @@ const userModel = require("./users");
 //   })
 // }) // remove kiya session ko (BAN HATAYA)
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // DATABASE SIKHA HAI
 // router.get("/create", async function(req, res) {
@@ -72,14 +73,6 @@ const userModel = require("./users");
 //   const userdeleted = await userModel.findOneAndDelete({username:"ash"});
 //   res.send(userdeleted);
 // }) // Delete one perticular user (DELETING)
-
-
-
-
-
-
-
-
 
 
 module.exports = router;
